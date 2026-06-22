@@ -21,10 +21,13 @@ npm run build && npm run start
 - **Markup** — the original HTML for each screen lives in [`content/`](content/)
   as a fragment and is injected by [`lib/screen.tsx`](lib/screen.tsx) inside the
   original `.amm-page` wrapper (so the client boot script can find it). The shared
-  header/footer fragments are injected by [`app/layout.tsx`](app/layout.tsx).
-  `admin.html` is intentionally empty — that screen is rendered client-side by
-  the "enterprise platform" script into `.amm-page[data-page="admin"]`.
-- **Styles** — the entire original `<style>` block is [`app/globals.css`](app/globals.css)
+  header/footer fragments are injected by [`app/layout.tsx`](app/layout.tsx). Each
+  screen's wrapper class comes from `content/_manifest.json` — admin keeps its
+  original `amm-page pf-page` class + `data-no-reveal`. The admin screen ships its
+  full login + ops-console markup statically; the "enterprise platform" script
+  (`__ammBootAdmin`) only toggles which view is shown.
+- **Styles** — all of the original's `<style>` blocks (main + admin/platform) are
+  merged into [`app/globals.css`](app/globals.css)
   (inline styles in the markup are kept as-is). Fonts (DM Sans + Manrope) load
   from Google Fonts via `<link>` in the layout. Port-only CSS fixes live separately
   in [`app/port-overrides.css`](app/port-overrides.css) (imported after globals) —

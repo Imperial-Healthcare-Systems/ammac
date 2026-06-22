@@ -1,0 +1,34 @@
+{
+  "home": {
+    "cls": "amm-page",
+    "noReveal": false
+  },
+  "products": {
+    "cls": "amm-page",
+    "noReveal": false
+  },
+  "repair": {
+    "cls": "amm-page",
+    "noReveal": false
+  },
+  "warehousing": {
+    "cls": "amm-page",
+    "noReveal": false
+  },
+  "why": {
+    "cls": "amm-page",
+    "noReveal": false
+  },
+  "parts": {
+    "cls": "amm-page",
+    "noReveal": false
+  },
+  "contact": {
+    "cls": "amm-page",
+    "noReveal": false
+  },
+  "admin": {
+    "cls": "amm-page pf-page",
+    "noReveal": true
+  }
+}

@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AMMAC Aircraft Parts — Next.js
 
-## Getting Started
+A Next.js 15 (App Router, TypeScript) port of the original single-file
+`ammac-platform.html`. This is a **pragmatic port**: the original hand-tuned
+markup, inline styles, and vanilla JS are preserved; only the structure around
+them changed (real routes, externalized assets, real `<head>`/metadata).
 
-First, run the development server:
+## Run
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build && npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Routes** — each original SPA screen is a real route:
+  `/` (home), `/products`, `/repair`, `/warehousing`, `/why`, `/parts`,
+  `/contact`, `/admin`. All are statically prerendered (SSG).
+- **Markup** — the original HTML for each screen lives in [`content/`](content/)
+  as a fragment and is injected by [`lib/screen.tsx`](lib/screen.tsx) inside the
+  original `.amm-page` wrapper (so the client boot script can find it). The shared
+  header/footer fragments are injected by [`app/layout.tsx`](app/layout.tsx).
+  `admin.html` is intentionally empty — that screen is rendered client-side by
+  the "enterprise platform" script into `.amm-page[data-page="admin"]`.
+- **Styles** — the entire original `<style>` block is [`app/globals.css`](app/globals.css)
+  (inline styles in the markup are kept as-is). Fonts (DM Sans + Manrope) load
+  from Google Fonts via `<link>` in the layout. Port-only CSS fixes live separately
+  in [`app/port-overrides.css`](app/port-overrides.css) (imported after globals) —
+  currently an `overflow-x: clip` rule on `html/body` so the home hero's
+  `position: sticky` stage pins correctly (with `overflow-x: hidden` the root became
+  a scroll container and the hero scrolled away, leaving a blank gap mid-scroll).
+- **Client JS** — bundled into [`public/js/`](public/js/):
+  - `core.bundle.js` (loaded on every page): world-map dots, parts-search app,
+    admin/ops platform, global motion layer, WhatsApp intent, parts-table labels,
+    and a **new real-routes router** that replaces the original hash router. The
+    router keeps the `window.AMM` chrome object (mega/mobile menus, contact form)
+    and, on load, boots whichever single `.amm-page` the route rendered.
+  - `three.bundle.js` (Three.js + the 3D hero glue): **lazy-loaded only on the
+    home page** by the router, which then calls `initPlaneHero(canvas, '/plane.glb')`.
+- **Assets** — the 23 base64 images were decoded to [`public/img/`](public/img/)
+  and the GLB aircraft model to [`public/plane.glb`](public/plane.glb).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Regenerating from the source HTML
 
-## Learn More
+The port is reproducible from the original `../ammac-platform.html` via two scripts
+in the parent folder:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+cd ..
+node extract.mjs    # HTML -> ammac-next/extracted/ + public/img + public/plane.glb
+node assemble.mjs   # extracted/ -> content/ fragments + public/js bundles
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`extracted/` holds the intermediate raw pieces (CSS, fragments, individual JS
+blocks) and is only needed when regenerating; the app itself reads from
+`content/` and `public/`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Known limitations / follow-ups
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Navigation is **full-page-reload MPA** (plain `<a href>`), matching the original
+  behavior faithfully; it is not client-side SPA navigation. The shared scripts
+  re-init per load, which is why this is safe.
+- Inline `onclick="AMM.*"` handlers in the header/footer work because `AMM` is a
+  global defined in `core.bundle.js`.
+- A full visual/interaction pass in a browser is still recommended (3D hero,
+  parts search, admin portal, contact form, mega/mobile menus).
+- Possible future hardening: convert `next/image`, migrate the 3D to
+  react-three-fiber, and componentize sections (was deliberately out of scope for
+  this pragmatic port).

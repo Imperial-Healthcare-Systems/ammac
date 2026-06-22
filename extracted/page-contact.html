@@ -1,0 +1,99 @@
+<main>
+  <!-- HERO -->
+  <section class="amm-ct-hero">
+    <div class="amm-ct-hero-inner" data-reveal>
+      <div class="amm-ct-eyebrow">Contact Us</div>
+      <h1 class="amm-ct-title">Let's keep your fleet&nbsp;flying</h1>
+      <p class="amm-ct-lede">Reach our team for AOG support, parts sourcing, repair coordination, or any enquiry. We respond fast — around the clock.</p>
+      <div class="amm-ct-quick">
+        <a href="tel:+971552637089" class="amm-ct-quickchip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 4h3l1.6 5-2 1.5a11 11 0 0 0 5 5l1.5-2 5 1.6V23a1 1 0 0 1-1 1A18 18 0 0 1 4 6a1 1 0 0 1 1-2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          +971 55 263 7089
+        </a>
+        <a href="mailto:Sales@AMMACAircraft.com?subject=AMMAC%20enquiry" class="amm-ct-quickchip">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Sales@AMMACAircraft.com
+        </a>
+        <span class="amm-ct-quickchip amm-ct-quickchip-aog">
+          <span class="amm-ct-dot"></span>24/7 AOG response
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY: form + visit -->
+  <section class="amm-ct-body">
+    <div class="amm-ct-grid">
+
+      <!-- FORM CARD -->
+      <div class="amm-ct-card amm-ct-formcard" data-reveal>
+        <div class="amm-ct-cardhead">
+          <h2>Send a message</h2>
+          <p>Tell us what you need. We'll reply to the email you provide.</p>
+        </div>
+        <div class="amm-cf-row">
+          <div class="amm-cf-field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" type="text" autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="amm-cf-field">
+            <label for="cf-email">Email <span class="amm-cf-req">*</span></label>
+            <input id="cf-email" type="email" autocomplete="email" placeholder="you@company.com">
+          </div>
+        </div>
+        <div class="amm-cf-field">
+          <label for="cf-company">Company <span class="amm-cf-opt">(optional)</span></label>
+          <input id="cf-company" type="text" autocomplete="organization" placeholder="Airline / MRO / operator">
+        </div>
+        <div class="amm-cf-field">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" rows="5" placeholder="Part numbers, aircraft type, timeline, or how we can help…"></textarea>
+        </div>
+        <button type="button" class="amm-cf-send" onclick="AMM.sendContact()">
+          Send message
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+      </div>
+
+      <!-- VISIT CARD -->
+      <div class="amm-ct-card amm-ct-visitcard" data-reveal data-delay="120">
+        <div class="amm-ct-cardhead">
+          <h2>See us in person</h2>
+          <p>We love our customers — feel free to visit during business hours.</p>
+        </div>
+
+        <a class="amm-ct-addr amm-map-link" href="https://www.google.com/maps/search/?api=1&query=Horizon+Towers+Rashidiya+1+Ajman+United+Arab+Emirates" target="_blank" rel="noopener">
+          <span class="amm-ct-addr-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.3 7-12a7 7 0 1 0-14 0c0 4.7 7 12 7 12Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg></span>
+          <span class="amm-ct-addr-txt">
+            <b>AMMAC Aircraft Parts</b>
+            Horizon Towers, Rashidiya 1<br>Ajman, United Arab Emirates
+            <span class="amm-ct-addr-map">View on Google Maps
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M5 3h8v8M13 3L4 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <div class="amm-ct-divider"></div>
+
+        <div class="amm-ct-hourshead">
+          <span>Opening hours</span>
+          <span class="amm-ct-status" id="amm-ct-status">Open status</span>
+        </div>
+        <ul class="amm-ct-hours">
+          <li data-day="1"><span>Monday</span><span>9:00 AM – 5:00 PM</span></li>
+          <li data-day="2"><span>Tuesday</span><span>9:00 AM – 5:00 PM</span></li>
+          <li data-day="3"><span>Wednesday</span><span>9:00 AM – 5:00 PM</span></li>
+          <li data-day="4"><span>Thursday</span><span>9:00 AM – 5:00 PM</span></li>
+          <li data-day="5"><span>Friday</span><span>9:00 AM – 5:00 PM</span></li>
+          <li data-day="6"><span>Saturday</span><span class="amm-ct-closed">Closed</span></li>
+          <li data-day="0"><span>Sunday</span><span class="amm-ct-closed">Closed</span></li>
+        </ul>
+
+        <div class="amm-ct-aognote">
+          <span class="amm-ct-dot amm-ct-dot-red"></span>
+          <span><strong>24/7 AOG support</strong> is always available — call or email any time, day or night.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

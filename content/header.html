@@ -1,0 +1,90 @@
+<header id="amm-header" class="amm-glass" style="position:fixed;top:0;left:0;width:100%;z-index:200;transition:background .4s ease,box-shadow .4s ease,padding .35s ease,backdrop-filter .4s ease;font-family:'DM Sans',system-ui,sans-serif;padding:16px 0">
+  <div style="max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="/" class="amm-hlogo" aria-label="AMMAC Aircraft Parts — home" style="display:flex;align-items:center;flex:none;text-decoration:none"><img src="/img/img-a821c718ac.webp" alt="AMMAC — We Keep Flyin'" style="height:clamp(26px,3vw,34px);width:auto;max-width:170px;display:block"></a>
+
+    <nav id="amm-desknav" style="display:flex;align-items:center;gap:0;flex:1;justify-content:center">
+      <a href="/" style="font-size:14.5px;font-weight:500;padding:8px 16px;text-decoration:none;transition:color .2s;color:#1a1830" data-hv="hv-3ffcb463">Home</a>
+      <span style="width:1px;height:16px;background:rgba(47,39,206,0.14)"></span>
+      <button onclick="AMM.toggleMega()" aria-haspopup="true" aria-expanded="false" style="display:flex;align-items:center;gap:6px;font-size:14.5px;font-weight:500;padding:8px 16px;background:none;border:none;transition:color .2s;color:#1a1830" data-hv="hv-3ffcb463">
+        Products &amp; Services
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none" style="transition:transform .3s ease;transform:rotate(0deg)"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <span style="width:1px;height:16px;background:rgba(47,39,206,0.14)"></span>
+      <a href="/repair" style="font-size:14.5px;font-weight:500;padding:8px 16px;text-decoration:none;transition:color .2s;color:#1a1830" data-hv="hv-3ffcb463">Repair Management</a>
+      <span style="width:1px;height:16px;background:rgba(47,39,206,0.14)"></span>
+      <a href="/warehousing" style="font-size:14.5px;font-weight:500;padding:8px 16px;text-decoration:none;transition:color .2s;color:#1a1830" data-hv="hv-3ffcb463">Warehousing &amp; Supply Chain</a>
+      <span style="width:1px;height:16px;background:rgba(47,39,206,0.14)"></span>
+      <a href="/parts" style="font-size:14.5px;font-weight:500;padding:8px 16px;text-decoration:none;transition:color .2s;color:#1a1830" data-hv="hv-3ffcb463">Parts Search</a>
+      <span style="width:1px;height:16px;background:rgba(47,39,206,0.14)"></span>
+      <a href="/why" style="font-size:14.5px;font-weight:500;padding:8px 16px;text-decoration:none;transition:color .2s;color:#1a1830" data-hv="hv-3ffcb463">Why AMMAC</a><span style="width:1px;height:16px;background:rgba(47,39,206,0.14)"></span><a href="/contact" style="font-size:14.5px;font-weight:500;padding:8px 16px;text-decoration:none;transition:color .2s;color:#1a1830" data-hv="hv-3ffcb463">Contact</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:14px;flex:none">
+      <a href="/admin" id="amm-adminlink" title="Admin Portal" aria-label="Admin Portal" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;color:#6a6880;text-decoration:none;border:1px solid rgba(47,39,206,0.14);transition:color .2s,border-color .2s,background .2s">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="4.5" y="10.5" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10.5V8a4 4 0 018 0v2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor"/></svg>
+      </a>
+      <a href="/contact" class="amm-headcta" style="display:inline-flex;align-items:center;gap:8px;background:#D92D20;color:#fff;font-size:13.5px;font-weight:600;padding:11px 18px;border-radius:8px;text-decoration:none;animation:ammPulse 3.4s ease-in-out infinite;white-space:nowrap" aria-label="24/7 AOG support">
+        <span style="width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block"></span>
+        24/7 AOG
+      </a>
+      <button onclick="AMM.toggleMobile()" id="amm-burger" aria-label="Open menu" style="display:none;align-items:center;justify-content:center;width:44px;height:44px;background:none;border:none;padding:8px;color:#2f27ce">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="amm-mega" style="position:absolute;left:0;top:100%;width:100%;background:#ffffff;border-bottom:1px solid rgba(47,39,206,0.1);box-shadow:0 24px 48px -24px rgba(26,24,48,0.18);overflow:hidden;max-height:0px;opacity:0;transition:max-height .38s cubic-bezier(.4,0,.2,1),opacity .3s ease">
+    <div style="max-width:1200px;margin:0 auto;padding:30px clamp(20px,5vw,48px) 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:28px">
+      <a href="/products#components" style="display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:10px;text-decoration:none;transition:background .2s" data-hv="hv-83e90936">
+        <span style="font-size:15px;font-weight:600;color:#2f27ce">Aircraft Components &amp; Rotables</span>
+        <span style="font-size:13px;color:#7a7990">ATR &amp; Boeing 737 family expertise</span>
+      </a>
+      <a href="/products#categories" style="display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:10px;text-decoration:none;transition:background .2s" data-hv="hv-83e90936">
+        <span style="font-size:15px;font-weight:600;color:#2f27ce">Product Categories</span>
+        <span style="font-size:13px;color:#7a7990">Rotables, expendables, consumables, LLPs</span>
+      </a>
+      <a href="/products#special" style="display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:10px;text-decoration:none;transition:background .2s" data-hv="hv-83e90936">
+        <span style="font-size:15px;font-weight:600;color:#2f27ce">Special Products &amp; Aircraft Sales</span>
+        <span style="font-size:13px;color:#7a7990">Alloys, survival systems, blast media</span>
+      </a>
+      <a href="/products#defence" style="display:flex;flex-direction:column;gap:6px;padding:14px;border-radius:10px;text-decoration:none;transition:background .2s" data-hv="hv-83e90936">
+        <span style="font-size:15px;font-weight:600;color:#2f27ce">Defence Supply Solutions</span>
+        <span style="font-size:13px;color:#7a7990">Mission-critical procurement</span>
+      </a>
+    </div>
+  </div>
+
+  <div id="amm-mobile" style="position:fixed;inset:0;z-index:300;background:#fdfdfc;transform:translateX(100%);transition:transform .42s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:18px clamp(20px,5vw,40px);border-bottom:1px solid rgba(47,39,206,0.08)">
+      <a href="/" onclick="AMM.closeMobile()" style="display:flex;align-items:center;text-decoration:none"><img src="/img/img-a821c718ac.webp" alt="AMMAC — We Keep Flyin'" style="height:30px;width:auto;max-width:150px;display:block"></a>
+      <button onclick="AMM.toggleMobile()" aria-label="Close menu" style="background:none;border:none;padding:8px;color:#2f27ce">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <nav style="flex:1;overflow-y:auto;padding:14px clamp(20px,5vw,40px);display:flex;flex-direction:column;gap:2px">
+      <a href="/" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Home</a>
+      <button onclick="AMM.toggleMobileProd()" aria-expanded="false" style="display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;border-bottom:1px solid rgba(47,39,206,0.07);font-size:19px;font-weight:600;padding:16px 0;text-align:left;color:#1a1830">
+        Products &amp; Services
+        <svg width="15" height="15" viewBox="0 0 12 12" fill="none" style="transition:transform .3s ease;transform:rotate(0deg)"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div style="overflow:hidden;max-height:0px;opacity:0;transition:max-height .36s ease,opacity .3s ease">
+        <div style="display:flex;flex-direction:column;gap:2px;padding:6px 0 10px">
+          <a href="/products#components" style="font-size:16px;color:#3a3852;padding:11px 0 11px 14px;border-left:2px solid rgba(76,66,255,0.3);text-decoration:none">Aircraft Components &amp; Rotables</a>
+          <a href="/products#categories" style="font-size:16px;color:#3a3852;padding:11px 0 11px 14px;border-left:2px solid rgba(76,66,255,0.3);text-decoration:none">Product Categories</a>
+          <a href="/products#special" style="font-size:16px;color:#3a3852;padding:11px 0 11px 14px;border-left:2px solid rgba(76,66,255,0.3);text-decoration:none">Special Products &amp; Aircraft Sales</a>
+          <a href="/products#defence" style="font-size:16px;color:#3a3852;padding:11px 0 11px 14px;border-left:2px solid rgba(76,66,255,0.3);text-decoration:none">Defence Supply Solutions</a>
+        </div>
+      </div>
+      <a href="/repair" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Repair Management</a>
+      <a href="/warehousing" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Warehousing &amp; Supply Chain</a>
+      <a href="/parts" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Parts Search</a>
+      <a href="/why" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Why AMMAC</a><a href="/contact" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Contact</a><a href="/admin" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#6a6880;display:flex;align-items:center;gap:9px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4.5" y="10.5" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10.5V8a4 4 0 018 0v2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Admin Portal</a>
+    </nav>
+    <div style="padding:18px clamp(20px,5vw,40px) calc(18px + env(safe-area-inset-bottom));border-top:1px solid rgba(47,39,206,0.08)">
+      <a href="/contact" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#D92D20;color:#fff;font-size:16px;font-weight:600;padding:16px;border-radius:10px;text-decoration:none">
+        <span style="width:8px;height:8px;border-radius:50%;background:#fff;display:inline-block"></span>
+        24/7 AOG — request support
+      </a>
+    </div>
+  </div>
+</header>

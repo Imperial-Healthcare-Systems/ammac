@@ -1,0 +1,14 @@
+/* Port-specific CSS overrides — kept separate from globals.css (a faithful copy
+   of the original site's <style>). Imported after globals.css so these win. */
+
+/* Home hero fix: .amm-hero-stage uses position:sticky. The original page resolved
+   html/body overflow-x to `clip` (leaving overflow-y `visible`), but in this build
+   the identical `overflow-x:hidden` rule resolves overflow-y to `auto`, turning the
+   root into a scroll container and preventing the sticky hero from pinning (it
+   scrolled away, leaving a blank gap mid-hero). `clip` stops horizontal overflow
+   without forcing the cross-axis to auto, so sticky works again. */
+html,
+body {
+  overflow-x: clip;
+  overflow-y: visible;
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "fname": "script-00-three-lib.js",
+    "role": "three-lib",
+    "chars": 672678
+  },
+  {
+    "fname": "script-01-hero3d.js",
+    "role": "hero3d",
+    "chars": 4784
+  },
+  {
+    "role": "glb-datauri",
+    "chars": 1738682,
+    "skipped": true
+  },
+  {
+    "fname": "script-03-worldmap-dots.js",
+    "role": "worldmap-dots",
+    "chars": 12258
+  },
+  {
+    "fname": "script-04-hero3d.js",
+    "role": "hero3d",
+    "chars": 8862
+  },
+  {
+    "fname": "script-05-motion.js",
+    "role": "motion",
+    "chars": 10433
+  },
+  {
+    "fname": "script-06-parts.js",
+    "role": "parts",
+    "chars": 25420
+  },
+  {
+    "fname": "script-07-whatsapp.js",
+    "role": "whatsapp",
+    "chars": 3790
+  },
+  {
+    "fname": "script-08-platform.js",
+    "role": "platform",
+    "chars": 57901
+  },
+  {
+    "fname": "script-09-parts-labels.js",
+    "role": "parts-labels",
+    "chars": 849
+  }
+]

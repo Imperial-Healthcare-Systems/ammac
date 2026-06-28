@@ -54,9 +54,9 @@ button{font-family:inherit;cursor:pointer}
 /* generated style-hover rules */
 [data-hv="hv-3ffcb463"]:hover{color:#4c42ff}
 [data-hv="hv-83e90936"]:hover{background:#f4f3ff}
-[data-hv="hv-828ebdcf"]:hover{background:#4c42ff;transform:translateY(-2px);box-shadow:0 22px 44px -18px rgba(47,39,206,.7)}
+[data-hv="hv-828ebdcf"]:hover{background:linear-gradient(120deg,#4c42ff 0%,#2f8ff5 100%);transform:translateY(-2px);box-shadow:0 22px 44px -18px rgba(35,90,220,.66)}
 [data-hv="hv-24185a93"]:hover{box-shadow:0 28px 56px -30px rgba(47,39,206,.5)}
-[data-hv="hv-ec3e39bb"]:hover{background:#4c42ff;transform:translateY(-2px)}
+[data-hv="hv-ec3e39bb"]:hover{background:linear-gradient(120deg,#4c42ff 0%,#2f8ff5 100%);transform:translateY(-2px)}
 [data-hv="hv-5c731cb4"]:hover{border-color:#4c42ff}
 [data-hv="hv-1de5f70e"]:hover{transform:translateY(-2px)}
 [data-hv="hv-a0e2c80c"]:hover{background:rgba(255,255,255,0.2)}
@@ -928,7 +928,7 @@ button,input,textarea,select,a{font-family:var(--amm-font-body)}
 .amm-cf-field input:hover,.amm-cf-field textarea:hover{border-color:rgba(47,39,206,0.25)}
 .amm-cf-field input:focus,.amm-cf-field textarea:focus{border-color:#4c42ff;background:#fff;box-shadow:0 0 0 4px rgba(76,66,255,0.1)}
 .amm-cf-field textarea{resize:vertical;min-height:128px;line-height:1.55}
-.amm-cf-send{display:inline-flex;align-items:center;gap:10px;width:100%;justify-content:center;background:#2f27ce;color:#fff;font-family:var(--amm-font-body);font-size:16px;font-weight:600;padding:16px 28px;border:none;border-radius:12px;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 18px 36px -18px rgba(47,39,206,0.65)}
+.amm-cf-send{display:inline-flex;align-items:center;gap:10px;width:100%;justify-content:center;background:linear-gradient(135deg,#3a32e0 0%,#2f27ce 52%,#1f78e4 100%);color:#fff;font-family:var(--amm-font-body);font-size:16px;font-weight:600;padding:16px 28px;border:none;border-radius:12px;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 18px 36px -18px rgba(35,80,210,0.62)}
 .amm-cf-send svg{transition:transform .2s}
 .amm-cf-send:hover{background:#241eb0;transform:translateY(-2px);box-shadow:0 24px 44px -18px rgba(47,39,206,0.75)}
 .amm-cf-send:hover svg{transform:translateX(3px)}
@@ -1026,6 +1026,9 @@ button,input,textarea,select,a{font-family:var(--amm-font-body)}
 /* col3 global ops */
 .amm-f5-ops{position:relative}
 
+.amm-f5-opsaddr{margin-bottom:22px}
+.amm-f5-opsaddr .amm-f5-contact{margin-bottom:12px}
+.amm-f5-opsaddr .amm-f5-contact:last-child{margin-bottom:0}
 .amm-f5-opsaddr .amm-f5-cic{width:36px;height:36px;border:none;background:rgba(63,142,255,0.12)}
 .amm-f5-certs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px);margin-top:0;align-items:stretch}
 .amm-f5-cert{position:relative;border:1px solid rgba(90,130,200,0.22);border-radius:12px;padding:14px 8px 12px;text-align:center;background:rgba(20,40,75,0.25);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;transition:border-color .25s,transform .25s,background .25s}
@@ -1119,9 +1122,9 @@ textarea:focus-visible,
 .ps-btn-primary{
   position:relative;
   isolation:isolate;
-  background:linear-gradient(180deg,#3a32e0 0%,#2f27ce 60%,#2a23bd 100%);
+  background:linear-gradient(135deg,#3a32e0 0%,#2f27ce 52%,#1f78e4 100%);
   box-shadow:0 1px 0 rgba(255,255,255,.18) inset,
-             0 18px 38px -16px rgba(47,39,206,.62),
+             0 18px 38px -16px rgba(35,80,210,.6),
              0 4px 12px -6px rgba(26,24,48,.35);
   transition:transform .35s cubic-bezier(.2,.8,.2,1),
              box-shadow .35s cubic-bezier(.2,.8,.2,1),
@@ -1135,10 +1138,10 @@ textarea:focus-visible,
 }
 .amm-cf-send:hover,
 .ps-btn-primary:hover{
-  background:linear-gradient(180deg,#4c42ff 0%,#3d34f0 60%,#352cdf 100%);
+  background:linear-gradient(135deg,#4c42ff 0%,#3d34f0 52%,#2f8ff5 100%);
   transform:translateY(-3px);
   box-shadow:0 1px 0 rgba(255,255,255,.25) inset,
-             0 26px 52px -18px rgba(47,39,206,.72),
+             0 26px 52px -18px rgba(35,90,220,.68),
              0 8px 18px -8px rgba(26,24,48,.4);
 }
 .amm-cf-send:hover::after,

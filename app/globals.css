@@ -1029,6 +1029,7 @@ button,input,textarea,select,a{font-family:var(--amm-font-body)}
 .amm-f5-opsaddr .amm-f5-contact{margin-bottom:12px}
 .amm-f5-opsaddr .amm-f5-contact:last-child{margin-bottom:0}
 .amm-f5-opsaddr .amm-f5-cic{width:36px;height:36px;border:none;background:rgba(63,142,255,0.12)}
+.amm-f5-loctitle{display:block;color:#fff;font-weight:600;font-size:13px;letter-spacing:0.02em;margin-bottom:3px}
 .amm-f5-certs{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px);margin-top:0;align-items:stretch}
 .amm-f5-cert{position:relative;border:1px solid rgba(90,130,200,0.22);border-radius:12px;padding:14px 8px 12px;text-align:center;background:rgba(20,40,75,0.25);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;transition:border-color .25s,transform .25s,background .25s}
 .amm-f5-cert:hover{border-color:rgba(63,142,255,0.5);transform:translateY(-3px);background:rgba(30,60,110,0.3)}

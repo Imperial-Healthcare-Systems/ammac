@@ -667,7 +667,6 @@ img,svg,video,canvas{ max-width:100%; }
 /* ============================================================
    PHONE  (<= 560px)
    ============================================================ */
-#amm-adminlink:hover{ color:#2f27ce; border-color:rgba(47,39,206,0.4); background:rgba(47,39,206,0.05); }
 @media (max-width:560px){
   /* generous touch targets for nav + ctas */
   #amm-mobile a, #amm-mobile button{ min-height:48px; display:flex; align-items:center; }

@@ -1,0 +1,348 @@
+/* ============================================================
+   AMMAC — DARK THEME (additive override layer)
+   ------------------------------------------------------------
+   Activated by `html[data-theme="dark"]`. Light mode is the
+   default and is left untouched: every rule here is scoped to
+   the dark attribute, so removing the attribute restores the
+   original site exactly.
+
+   Palette mirrors the approved dark-mode mockup
+   (anchored to navy #070d1b + blue #3f8eff).
+
+   The existing markup is heavily inline-styled, so most colour
+   remaps use attribute-substring selectors (e.g.
+   [style*="color:#16142e"]) with !important — this legitimately
+   overrides the *non-important* inline declarations by value,
+   which is the only way to recolour the classless extracted DOM
+   without rewriting it.
+   ============================================================ */
+
+html[data-theme="dark"] {
+  /* surfaces */
+  --d-bg0: #070d1b;          /* page base */
+  --d-bg1: #0a1426;          /* section base */
+  --d-bg2: #0e1a30;          /* raised section / menus */
+  --d-surface: #111d36;      /* card */
+  --d-surface2: #15233f;     /* card hover / inset */
+  --d-glass: rgba(16, 28, 50, 0.72);
+  /* ink */
+  --d-ink: #eef3fb;          /* headings */
+  --d-ink2: #c3d2e8;         /* body */
+  --d-ink3: #9fb0cb;         /* muted */
+  --d-ink4: #8294b0;         /* faint */
+  /* accents */
+  --d-brand: #7c84ff;        /* lifted indigo (links) */
+  --d-brand2: #9b8bff;       /* violet eyebrow */
+  --d-blue: #3f8eff;
+  --d-blue-soft: #4f9bff;
+  --d-aog: #e23b2d;          /* deep red — clears AA on white text */
+  /* lines / tints */
+  --d-line: rgba(120, 150, 210, 0.16);
+  --d-line-strong: rgba(120, 150, 210, 0.28);
+  --d-tint: rgba(124, 132, 255, 0.10);
+  --d-tint2: rgba(63, 142, 255, 0.12);
+
+  color-scheme: dark;
+}
+
+/* ---- admin portal (pf-*) themes purely through its variables ---- */
+html[data-theme="dark"] {
+  --pf-ink: #eef3fb;
+  --pf-ink2: #9fb0cb;
+  --pf-line: rgba(120, 150, 210, 0.18);
+  --pf-line2: rgba(120, 150, 210, 0.10);
+  --pf-brand: #7c84ff;
+  --pf-brand2: #9b8bff;
+  --pf-bg: #070d1b;
+  --pf-card: #111d36;
+  --pf-greenbg: rgba(6, 118, 71, 0.18);
+  --pf-amberbg: rgba(181, 71, 8, 0.18);
+  --pf-bluebg: rgba(63, 142, 255, 0.14);
+  --pf-shadow: 0 18px 40px -28px rgba(0, 0, 0, 0.7);
+}
+
+/* ============================================================
+   1. SMOOTH TOGGLE
+   The `.theme-transition` class is added to <html> only for the
+   ~450ms around a toggle, so we get a seamless cross-fade
+   without permanently overriding the site's own transitions
+   (which would clobber hover effects).
+   ============================================================ */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  transition: background-color .4s ease, background-image .4s ease,
+              color .4s ease, border-color .4s ease,
+              fill .4s ease, stroke .4s ease, box-shadow .4s ease !important;
+}
+
+/* ============================================================
+   2. BASE
+   ============================================================ */
+html[data-theme="dark"] body { background: var(--d-bg0) !important; color: var(--d-ink2); }
+html[data-theme="dark"] h1, html[data-theme="dark"] h2, html[data-theme="dark"] h3,
+html[data-theme="dark"] h4, html[data-theme="dark"] h5, html[data-theme="dark"] h6 { color: var(--d-ink); }
+
+/* ============================================================
+   3. INLINE-STYLE COLOUR REMAPS  (text)
+   ============================================================ */
+/* headings / strongest ink */
+html[data-theme="dark"] [style*="color:#16142e"],
+html[data-theme="dark"] [style*="color:#1a1830"],
+html[data-theme="dark"] [style*="color:#0f0e22"],
+html[data-theme="dark"] [style*="color:#0f1424"],
+html[data-theme="dark"] [style*="color:#2a2550"] { color: var(--d-ink) !important; }
+
+/* body ink */
+html[data-theme="dark"] [style*="color:#3a3852"],
+html[data-theme="dark"] [style*="color:#2b2942"],
+html[data-theme="dark"] [style*="color:#1f2433"],
+html[data-theme="dark"] [style*="color:#454b5e"],
+html[data-theme="dark"] [style*="color:#46435e"] { color: var(--d-ink2) !important; }
+
+/* muted ink */
+html[data-theme="dark"] [style*="color:#5b5a6e"],
+html[data-theme="dark"] [style*="color:#7a7990"],
+html[data-theme="dark"] [style*="color:#6a6980"],
+html[data-theme="dark"] [style*="color:#6a6880"],
+html[data-theme="dark"] [style*="color:#6b6890"] { color: var(--d-ink3) !important; }
+
+/* faint ink */
+html[data-theme="dark"] [style*="color:#9a99ab"],
+html[data-theme="dark"] [style*="color:#9794ad"],
+html[data-theme="dark"] [style*="color:#a7a6b8"],
+html[data-theme="dark"] [style*="color:#c4c3da"],
+html[data-theme="dark"] [style*="color:#cdcae8"] { color: var(--d-ink4) !important; }
+
+/* brand indigo accents → lifted */
+html[data-theme="dark"] [style*="color:#2f27ce"],
+html[data-theme="dark"] [style*="color:#4c42ff"],
+html[data-theme="dark"] [style*="color:#7c75ff"],
+html[data-theme="dark"] [style*="color:#1f78e4"] { color: var(--d-brand) !important; }
+
+/* ============================================================
+   4. INLINE-STYLE BACKGROUND REMAPS
+   ============================================================ */
+/* page base */
+html[data-theme="dark"] [style*="background:#fdfdfc"],
+html[data-theme="dark"] [style*="background: #fdfdfc"] { background-color: var(--d-bg0) !important; }
+
+/* white card surfaces (#fff / #ffffff) */
+html[data-theme="dark"] [style*="background:#fff"],
+html[data-theme="dark"] [style*="background: #fff"],
+html[data-theme="dark"] [style*="background:#fbfcff"],
+html[data-theme="dark"] [style*="background:#f7feff"],
+html[data-theme="dark"] [style*="background:#f8f9fd"] { background-color: var(--d-surface) !important; }
+
+/* light indigo / blue tint surfaces */
+html[data-theme="dark"] [style*="background:#f1f3ff"],
+html[data-theme="dark"] [style*="background:#eef2ff"],
+html[data-theme="dark"] [style*="background:#eef4ff"],
+html[data-theme="dark"] [style*="background:#eef3ff"],
+html[data-theme="dark"] [style*="background:#e7f0ff"],
+html[data-theme="dark"] [style*="background:#e6e6f2"],
+html[data-theme="dark"] [style*="background:#e9f1fe"],
+html[data-theme="dark"] [style*="background:#e8f2fd"],
+html[data-theme="dark"] [style*="background:#e4eefb"],
+html[data-theme="dark"] [style*="background:#e3eeff"],
+html[data-theme="dark"] [style*="background:#f3f6fd"],
+html[data-theme="dark"] [style*="background:#f4f7fd"],
+html[data-theme="dark"] [style*="background:#f4f6ff"],
+html[data-theme="dark"] [style*="background:#f3f7ff"],
+html[data-theme="dark"] [style*="background:#eaf2ff"],
+html[data-theme="dark"] [style*="background:#dfe9ff"],
+html[data-theme="dark"] [style*="background:#cdd6ff"] { background-color: var(--d-surface2) !important; }
+
+/* translucent white glass → dark glass */
+html[data-theme="dark"] [style*="background:rgba(255,255,255"],
+html[data-theme="dark"] [style*="background: rgba(255,255,255"] { background-color: var(--d-glass) !important; }
+
+/* faint indigo tint chips / fills */
+html[data-theme="dark"] [style*="background:rgba(47,39,206"] { background-color: var(--d-tint) !important; }
+
+/* ============================================================
+   5. INLINE-STYLE BORDER REMAPS
+   ============================================================ */
+html[data-theme="dark"] [style*="solid rgba(47,39,206"],
+html[data-theme="dark"] [style*="solid rgba(26,24,48"],
+html[data-theme="dark"] [style*="solid rgba(76,66,255"] { border-color: var(--d-line) !important; }
+
+/* ============================================================
+   6. HEADER / GLASS / NAV
+   ============================================================ */
+html[data-theme="dark"] .amm-glass {
+  background: var(--d-glass) !important;
+  border-bottom-color: var(--d-line) !important;
+  box-shadow: 0 8px 30px -18px rgba(0, 0, 0, 0.7) !important;
+}
+html[data-theme="dark"] .amm-glass.amm-scrolled {
+  background: rgba(8, 16, 32, 0.88) !important;
+  border-bottom-color: var(--d-line-strong) !important;
+  box-shadow: 0 10px 34px -16px rgba(0, 0, 0, 0.8) !important;
+}
+html[data-theme="dark"] .amm-glass::before {
+  background: linear-gradient(90deg, transparent, rgba(120, 150, 210, 0.35) 20%, rgba(120, 150, 210, 0.35) 80%, transparent) !important;
+}
+html[data-theme="dark"] .amm-glass::after {
+  background: linear-gradient(180deg, rgba(124, 132, 255, 0.06), rgba(124, 132, 255, 0)) !important;
+}
+
+/* nav links + hover */
+html[data-theme="dark"] #amm-desknav a,
+html[data-theme="dark"] #amm-desknav button { color: var(--d-ink2) !important; }
+html[data-theme="dark"] .amm-navlink:hover,
+html[data-theme="dark"] [data-hv="hv-3ffcb463"]:hover { color: var(--d-brand) !important; }
+
+/* mega menu panel + cards */
+html[data-theme="dark"] #amm-mega {
+  background: var(--d-bg2) !important;
+  border-bottom-color: var(--d-line) !important;
+  box-shadow: 0 24px 48px -24px rgba(0, 0, 0, 0.7) !important;
+}
+html[data-theme="dark"] .amm-mega-card:hover,
+html[data-theme="dark"] [data-hv="hv-83e90936"]:hover { background: var(--d-surface) !important; }
+
+/* mobile slide-over */
+html[data-theme="dark"] #amm-mobile { background: var(--d-bg0) !important; }
+
+/* Logo: keep the original Logo.jpeg in both light and dark mode
+   (no swap to the text-only cutout) — consistency per design. */
+
+/* ============================================================
+   7. THEME TOGGLE BUTTON
+   ============================================================ */
+[data-theme-toggle] .amm-th-sun { display: none; }
+[data-theme-toggle] .amm-th-moon { display: block; }
+html[data-theme="dark"] [data-theme-toggle] .amm-th-sun { display: block; }
+html[data-theme="dark"] [data-theme-toggle] .amm-th-moon { display: none; }
+html[data-theme="dark"] [data-theme-toggle] { color: var(--d-ink3) !important; border-color: var(--d-line) !important; }
+html[data-theme="dark"] [data-theme-toggle]:hover { color: #fff !important; border-color: var(--d-line-strong) !important; background: var(--d-tint) !important; }
+
+/* ============================================================
+   8. LIGHT GRADIENTS & OVERLAYS  (the main fix)
+   The page wrapper + several sections/cards use LIGHT *gradient*
+   backgrounds that solid-hex substring selectors can't catch, so
+   they stayed light while the text/cards went dark. Each is
+   matched by its distinctive light colour stop and re-painted
+   dark. Brand/already-dark gradients (#2f27ce, #16142e, #1a1830…)
+   are deliberately NOT matched, so CTAs and dark bands keep their
+   richness.
+   ============================================================ */
+
+/* page wrapper: light sky gradient → dark vertical wash */
+html[data-theme="dark"] main {
+  background: linear-gradient(180deg, var(--d-bg1), var(--d-bg0)) !important;
+}
+
+/* full-bleed section bands (light) → section base */
+html[data-theme="dark"] [style*="#e8f2fd"],          /* capabilities band   */
+html[data-theme="dark"] [style*="#eef4ff"],          /* fdfdfc→eef4ff bands */
+html[data-theme="dark"] [style*="#afdbff"] {         /* hero sky gradient   */
+  background: var(--d-bg1) !important;
+}
+
+/* light cards / panels → card surface */
+html[data-theme="dark"] [style*="#e7f0ff"],          /* pillar cards        */
+html[data-theme="dark"] [style*="#f3f7ff"],          /* feature card        */
+html[data-theme="dark"] [style*="#eaf2ff"],          /* promo band          */
+html[data-theme="dark"] [style*="#6bb5ed"] {         /* illustration tile   */
+  background: var(--d-surface) !important;
+}
+
+/* small icon tiles → faint blue tint */
+html[data-theme="dark"] [style*="#dfe9ff"] {
+  background: var(--d-tint2) !important;
+}
+
+/* Core Services "pillar" cards — these white cards (inline background:#fff)
+   are targeted by class for reliability. */
+html[data-theme="dark"] .amm-pillar {
+  background: var(--d-surface) !important;
+  border-color: var(--d-line) !important;
+}
+html[data-theme="dark"] .amm-pillar:hover { background: var(--d-surface2) !important; }
+
+/* hero white radial wash → remove (it was washing out the H1) */
+html[data-theme="dark"] [style*="rgba(255,255,255,0.85)"] {
+  background: none !important;
+}
+
+/* promo image legibility fade: white → navy */
+html[data-theme="dark"] [style*="rgba(253,253,252"] {
+  background: linear-gradient(90deg, rgba(7,13,27,0.94) 0%, rgba(7,13,27,0.8) 30%, rgba(7,13,27,0.25) 52%, rgba(7,13,27,0) 70%) !important;
+}
+
+/* ============================================================
+   9. HOME HERO — darken the light sky photo with a navy scrim
+   (re-declares the background so the image survives, just dimmed)
+   ============================================================ */
+html[data-theme="dark"] .amm-hero-stage {
+  background:
+    linear-gradient(180deg, rgba(7, 13, 27, 0.62), rgba(7, 13, 27, 0.88)),
+    #070d1b url("/img/img-16bad8c036.webp") center / cover no-repeat !important;
+}
+
+/* ============================================================
+   9. PARTS SEARCH (ps-*)
+   ============================================================ */
+html[data-theme="dark"] .ps-searchbar { background: var(--d-surface) !important; box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.8) !important; }
+html[data-theme="dark"] .ps-search-ic { color: var(--d-brand) !important; }
+html[data-theme="dark"] .ps-clear { background: var(--d-surface2) !important; color: var(--d-brand) !important; }
+html[data-theme="dark"] .ps-kbd { color: var(--d-ink3) !important; background: var(--d-surface2) !important; border-color: var(--d-line) !important; }
+html[data-theme="dark"] .ps-chip { background: var(--d-surface) !important; color: var(--d-ink2) !important; border-color: var(--d-line-strong) !important; }
+html[data-theme="dark"] .ps-chip.is-active { background: var(--d-brand) !important; border-color: var(--d-brand) !important; color: #0a1020 !important; }
+html[data-theme="dark"] .ps-cond button.is-active,
+html[data-theme="dark"] .ps-pg-btn.is-active,
+html[data-theme="dark"] .ps-rfqbtn { background: var(--d-brand) !important; color: #0a1020 !important; border-color: var(--d-brand) !important; }
+html[data-theme="dark"] .ps-count,
+html[data-theme="dark"] .ps-pg-info,
+html[data-theme="dark"] .ps-ata-cell,
+html[data-theme="dark"] .ps-trace,
+html[data-theme="dark"] .ps-table-empty,
+html[data-theme="dark"] .ps-seo-note,
+html[data-theme="dark"] .ps-pg-ell { color: var(--d-ink3) !important; }
+html[data-theme="dark"] .ps-altpn { color: var(--d-ink4) !important; }
+html[data-theme="dark"] .ps-mfr-cell { color: var(--d-ink2) !important; }
+html[data-theme="dark"] .ps-pg-btn { background: var(--d-surface) !important; color: var(--d-ink2) !important; border-color: var(--d-line) !important; }
+html[data-theme="dark"] .ps-card { background: var(--d-surface) !important; border-color: var(--d-line) !important; }
+html[data-theme="dark"] .ps-card-pn,
+html[data-theme="dark"] .ps-pn-cell { color: var(--d-ink) !important; }
+html[data-theme="dark"] .ps-card-desc,
+html[data-theme="dark"] .ps-tag { color: var(--d-ink3) !important; }
+html[data-theme="dark"] .ps-tag { background: var(--d-surface2) !important; }
+html[data-theme="dark"] .ps-card-cond,
+html[data-theme="dark"] .ps-link { color: var(--d-brand) !important; }
+html[data-theme="dark"] .ps-rowrfq { background: var(--d-surface) !important; color: var(--d-brand) !important; border-color: var(--d-line-strong) !important; }
+html[data-theme="dark"] .ps-table-wrap,
+html[data-theme="dark"] .ps-toolbar { border-color: var(--d-line) !important; }
+
+/* ============================================================
+   10. CONTACT (amm-ct-* / amm-cf-*)
+   ============================================================ */
+html[data-theme="dark"] .amm-ct-hero {
+  background:
+    radial-gradient(120% 140% at 88% -20%, rgba(124, 132, 255, 0.12), transparent 55%),
+    radial-gradient(90% 120% at 0% 0%, rgba(63, 142, 255, 0.10), transparent 50%),
+    linear-gradient(180deg, var(--d-bg1), var(--d-bg0)) !important;
+}
+html[data-theme="dark"] .amm-ct-title { color: var(--d-ink) !important; }
+html[data-theme="dark"] .amm-ct-lede { color: var(--d-ink2) !important; }
+html[data-theme="dark"] .amm-ct-eyebrow { color: var(--d-brand) !important; }
+html[data-theme="dark"] .amm-ct-quickchip { background: var(--d-surface) !important; color: var(--d-ink2) !important; border-color: var(--d-line) !important; }
+html[data-theme="dark"] .amm-ct-card { background: var(--d-surface) !important; border-color: var(--d-line) !important; box-shadow: 0 30px 70px -50px rgba(0, 0, 0, 0.8) !important; }
+html[data-theme="dark"] .amm-cf-field input,
+html[data-theme="dark"] .amm-cf-field textarea { background: var(--d-bg2) !important; color: var(--d-ink) !important; border-color: var(--d-line-strong) !important; }
+html[data-theme="dark"] .amm-cf-note { color: var(--d-ink4) !important; }
+
+/* ============================================================
+   11. ADMIN — a few hardcoded (non-var) surfaces
+   ============================================================ */
+html[data-theme="dark"] .pf-btn-ghost,
+html[data-theme="dark"] .pf-btn-danger,
+html[data-theme="dark"] .pf-search input,
+html[data-theme="dark"] .pf-select,
+html[data-theme="dark"] .pf-tablewrap,
+html[data-theme="dark"] .pf-side,
+html[data-theme="dark"] .pf-login { background: var(--d-surface) !important; }
+html[data-theme="dark"] .pf-login { box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.8) !important; }

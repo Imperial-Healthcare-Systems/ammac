@@ -1,5 +1,6 @@
 import './globals.css';
 import './port-overrides.css';
+import './dark-theme.css';
 import type { Metadata } from 'next';
 import Script from 'next/script';
 import { fragment } from '@/lib/content';
@@ -48,8 +49,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const header = fragment('header');
   const footer = fragment('footer');
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body style={{ margin: 0, background: '#fdfdfc' }}>
+        <Script id="amm-theme-init" strategy="beforeInteractive">
+          {`(function(){var d=document.documentElement;function get(){try{var s=localStorage.getItem('amm-theme');if(s==='dark'||s==='light')return s;}catch(e){}return (window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';}
+d.setAttribute('data-theme',get());
+window.__ammSetTheme=function(t){d.classList.add('theme-transition');d.setAttribute('data-theme',t);try{localStorage.setItem('amm-theme',t);}catch(e){}try{var b=document.querySelectorAll('[data-theme-toggle]');for(var i=0;i<b.length;i++){b[i].setAttribute('aria-pressed',t==='dark'?'true':'false');}}catch(e){}window.clearTimeout(window.__ammTT);window.__ammTT=window.setTimeout(function(){d.classList.remove('theme-transition');},450);};
+window.__ammToggleTheme=function(){var cur=d.getAttribute('data-theme')==='dark'?'dark':'light';window.__ammSetTheme(cur==='dark'?'light':'dark');};})();`}
+        </Script>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
         <link

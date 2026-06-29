@@ -20,9 +20,10 @@
     </nav>
 
     <div style="display:flex;align-items:center;gap:14px;flex:none">
-      <a href="/admin" id="amm-adminlink" title="Admin Portal" aria-label="Admin Portal" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;color:#6a6880;text-decoration:none;border:1px solid rgba(47,39,206,0.14);transition:color .2s,border-color .2s,background .2s">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="4.5" y="10.5" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10.5V8a4 4 0 018 0v2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="12" cy="15.5" r="1.4" fill="currentColor"/></svg>
-      </a>
+      <button type="button" onclick="__ammToggleTheme()" data-theme-toggle title="Toggle dark mode" aria-label="Toggle dark mode" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:8px;color:#6a6880;background:none;border:1px solid rgba(47,39,206,0.14);transition:color .2s,border-color .2s,background .2s">
+        <svg class="amm-th-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.4" stroke="currentColor" stroke-width="1.7"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+        <svg class="amm-th-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20.5 14.3A8.2 8.2 0 0 1 9.7 3.5 8.2 8.2 0 1 0 20.5 14.3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+      </button>
       <a href="/contact" class="amm-headcta" style="display:inline-flex;align-items:center;gap:8px;background:#D92D20;color:#fff;font-size:13.5px;font-weight:600;padding:11px 18px;border-radius:8px;text-decoration:none;animation:ammPulse 3.4s ease-in-out infinite;white-space:nowrap" aria-label="24/7 AOG support">
         <span style="width:7px;height:7px;border-radius:50%;background:#fff;display:inline-block"></span>
         24/7 AOG
@@ -78,7 +79,7 @@
       <a href="/repair" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Repair Management</a>
       <a href="/warehousing" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Warehousing &amp; Supply Chain</a>
       <a href="/parts" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Parts Search</a>
-      <a href="/why" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Why AMMAC</a><a href="/contact" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Contact</a><a href="/admin" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#6a6880;display:flex;align-items:center;gap:9px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="4.5" y="10.5" width="15" height="10" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 10.5V8a4 4 0 018 0v2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Admin Portal</a>
+      <a href="/why" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Why AMMAC</a><a href="/contact" style="font-size:19px;font-weight:600;padding:16px 0;border-bottom:1px solid rgba(47,39,206,0.07);text-decoration:none;color:#1a1830">Contact</a>
     </nav>
     <div style="padding:18px clamp(20px,5vw,40px) calc(18px + env(safe-area-inset-bottom));border-top:1px solid rgba(47,39,206,0.08)">
       <a href="/contact" style="display:flex;align-items:center;justify-content:center;gap:10px;background:#D92D20;color:#fff;font-size:16px;font-weight:600;padding:16px;border-radius:10px;text-decoration:none">

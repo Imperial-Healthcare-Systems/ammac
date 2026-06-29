@@ -1485,6 +1485,43 @@ img,video{ height:auto; }
   .pf-login{ padding:24px 20px; }
 }
 
+/* ---- Strategic Presence: baked dotted globe (PNG) + animated SVG flight arcs ---- */
+.amm-globe{position:relative;
+  --amm-arc:#6a5cf0;--amm-arc-core:#9a8dff;--amm-arc-glow:rgba(106,92,240,.55);--amm-plane:#4c42ff;
+  --amm-pin-card-bg:#fff;--amm-pin-card-bd:rgba(47,39,206,.10);--amm-pin-city:#16142e;--amm-pin-sub:#4c42ff;
+  --amm-reg:#2f27ce}
+.amm-globe-img{background-image:url(/img/globe-light.png);background-size:100% 100%;background-position:center;background-repeat:no-repeat}
+.amm-routes{overflow:visible}
+.amm-globe-ov{position:absolute;inset:0;pointer-events:none;font-family:'DM Sans',system-ui,sans-serif}
+/* region waypoints */
+.amm-gwp{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:7px;
+  font-size:13px;font-weight:600;color:var(--amm-reg);white-space:nowrap}
+.amm-gwp-dot{width:7px;height:7px;flex:none;border-radius:50%;background:var(--amm-reg);
+  box-shadow:0 0 0 4px color-mix(in srgb,var(--amm-reg) 20%,transparent)}
+.amm-gwp-l{flex-direction:row-reverse}
+/* hub / warehouse pins */
+.amm-gpin{position:absolute;transform:translate(-50%,-100%);display:flex;align-items:flex-start}
+.amm-gpin-drop{position:relative;width:26px;height:26px;flex:none;border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+  background:radial-gradient(circle at 60% 35%,#fff 0 20%,var(--amm-plane) 62%);
+  box-shadow:0 8px 18px -6px rgba(47,39,206,.6),0 0 0 6px color-mix(in srgb,var(--amm-plane) 16%,transparent)}
+.amm-gpin-drop::after{content:"";position:absolute;inset:0;border-radius:inherit;
+  animation:ammPinPulse 2.6s ease-out infinite;box-shadow:0 0 0 0 color-mix(in srgb,var(--amm-plane) 45%,transparent)}
+@keyframes ammPinPulse{to{box-shadow:0 0 0 16px transparent}}
+.amm-gpin-wh .amm-gpin-drop{border-radius:7px;transform:none;background:radial-gradient(circle at 50% 35%,#fff 0 18%,#1f6feb 70%)}
+.amm-gpin-wh .amm-gpin-drop::after{border-radius:7px}
+.amm-gcard{margin-top:-4px;margin-left:9px;background:var(--amm-pin-card-bg);border:1px solid var(--amm-pin-card-bd);
+  border-radius:12px;padding:9px 13px;box-shadow:0 14px 30px -16px rgba(20,20,60,.5);
+  display:flex;flex-direction:column;line-height:1.12;white-space:nowrap}
+.amm-gcard b{font-size:16px;font-weight:700;color:var(--amm-pin-city)}
+.amm-gcard span{font-size:12px;font-weight:600;color:var(--amm-pin-sub);margin-top:2px}
+.amm-gpin-r{transform:translate(-100%,-100%)}
+.amm-gpin-r .amm-gpin-drop{order:2}
+.amm-gpin-r .amm-gcard{order:1;margin-left:0;margin-right:9px;text-align:right;align-items:flex-end}
+@media (prefers-reduced-motion:reduce){.amm-gpin-drop::after{animation:none}}
+/* On phones the overlay cards/labels crowd the globe — keep the pins + arcs,
+   names are carried by the hub cards below. */
+@media (max-width:720px){.amm-globe-ov .amm-gcard,.amm-globe-ov .amm-gwp{display:none}}
+
 /* ---- 11. Honour reduced-motion globally for the platform layer ---- */
 @media (prefers-reduced-motion:reduce){
   .pf-drawer,.pf-side,.pf-toast,.pf-btn,.ps-pg-btn{ transition:none !important; }

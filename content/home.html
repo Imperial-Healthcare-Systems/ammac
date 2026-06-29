@@ -358,83 +358,29 @@
         </div>
       </div>
       <div data-reveal="" data-delay="120" style="position:relative;background:linear-gradient(160deg,#f3f7ff 0%,#fbfcff 58%,#f4f6ff 100%);border:1px solid rgba(47,39,206,0.1);border-radius:28px;padding:clamp(18px,2.6vw,34px);overflow:hidden">
-        <div class="amm-map" style="position:relative;width:100%;aspect-ratio:1300/452;min-height:300px">
-          <canvas id="amm-stratmap" style="position:absolute;inset:0;width:100%;height:100%;display:block"></canvas>
-          <div style="position:absolute;inset:0;pointer-events:none">
-        <div style="position:absolute;left:19.44%;top:25.4%;transform:translate(-5px,-50%);display:flex;align-items:center;gap:9px">
-          <span style="position:relative;width:11px;height:11px;flex:none">
-            <span style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(47,39,206,0.45)"></span>
-            <span style="position:absolute;inset:3px;border-radius:50%;background:#2f27ce"></span>
-          </span>
-          <span class="amm-maplabel" style="font-size:13px;font-weight:600;color:#2f27ce;white-space:nowrap">North America</span>
+        <div class="amm-globe" style="position:relative;width:100%;aspect-ratio:2453/1326;min-height:300px">
+          <div class="amm-globe-img" aria-hidden="true" style="position:absolute;inset:0"></div>
+          <svg class="amm-routes" id="amm-routes" viewBox="114 31 2453 1326" preserveAspectRatio="none" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block"></svg>
+          <div class="amm-globe-ov" id="amm-globe-ov" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none"></div>
         </div>
-        <div style="position:absolute;left:50%;top:19.05%;transform:translate(-5px,-50%);display:flex;align-items:center;gap:9px">
-          <span style="position:relative;width:11px;height:11px;flex:none">
-            <span style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(47,39,206,0.45)"></span>
-            <span style="position:absolute;inset:3px;border-radius:50%;background:#2f27ce"></span>
-          </span>
-          <span class="amm-maplabel" style="font-size:13px;font-weight:600;color:#2f27ce;white-space:nowrap">Europe</span>
-        </div>
-        <div style="position:absolute;left:52.78%;top:56.35%;transform:translate(-5px,-50%);display:flex;align-items:center;gap:9px">
-          <span style="position:relative;width:11px;height:11px;flex:none">
-            <span style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(47,39,206,0.45)"></span>
-            <span style="position:absolute;inset:3px;border-radius:50%;background:#2f27ce"></span>
-          </span>
-          <span class="amm-maplabel" style="font-size:13px;font-weight:600;color:#2f27ce;white-space:nowrap">Africa</span>
-        </div>
-        <div style="position:absolute;left:30.56%;top:74.6%;transform:translate(-5px,-50%);display:flex;align-items:center;gap:9px">
-          <span style="position:relative;width:11px;height:11px;flex:none">
-            <span style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(47,39,206,0.45)"></span>
-            <span style="position:absolute;inset:3px;border-radius:50%;background:#2f27ce"></span>
-          </span>
-          <span class="amm-maplabel" style="font-size:13px;font-weight:600;color:#2f27ce;white-space:nowrap">South America</span>
-        </div>
-        <div style="position:absolute;left:81.11%;top:30.16%;transform:translate(-5px,-50%);display:flex;align-items:center;gap:9px">
-          <span style="position:relative;width:11px;height:11px;flex:none">
-            <span style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(47,39,206,0.45)"></span>
-            <span style="position:absolute;inset:3px;border-radius:50%;background:#2f27ce"></span>
-          </span>
-          <span class="amm-maplabel" style="font-size:13px;font-weight:600;color:#2f27ce;white-space:nowrap">East Asia</span>
-        </div>
-        <div style="position:absolute;left:84.44%;top:78.57%;transform:translate(-5px,-50%);display:flex;align-items:center;gap:9px">
-          <span style="position:relative;width:11px;height:11px;flex:none">
-            <span style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(47,39,206,0.45)"></span>
-            <span style="position:absolute;inset:3px;border-radius:50%;background:#2f27ce"></span>
-          </span>
-          <span class="amm-maplabel" style="font-size:13px;font-weight:600;color:#2f27ce;white-space:nowrap">Australia</span>
-        </div>
-        <div style="position:absolute;left:62.58%;top:38.65%;transform:translate(-50%,-50%);width:18px;height:18px">
-          <span class="amm-hubglow" style="position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:radial-gradient(circle,rgba(76,66,255,0.3),rgba(76,66,255,0) 70%)"></span>
-          <span style="position:absolute;inset:0;border-radius:50%;border:2px solid rgba(76,66,255,0.45)"></span>
-          <span style="position:absolute;inset:4px;border-radius:50%;background:#2f27ce;box-shadow:0 0 0 3px #fff"></span>
-        </div>
-        <div style="position:absolute;left:76.06%;top:57.62%;transform:translate(-50%,-50%);width:18px;height:18px">
-          <span class="amm-hubglow" style="position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;background:radial-gradient(circle,rgba(76,66,255,0.3),rgba(76,66,255,0) 70%)"></span>
-          <span style="position:absolute;inset:0;border-radius:50%;border:2px solid rgba(76,66,255,0.45)"></span>
-          <span style="position:absolute;inset:4px;border-radius:50%;background:#2f27ce;box-shadow:0 0 0 3px #fff"></span>
-        </div>
-            <div style="position:absolute;left:62.58%;top:38.65%;transform:translate(-28%,-138%);background:#fff;border:1px solid rgba(47,39,206,0.08);border-radius:14px;padding:11px 17px;box-shadow:0 16px 38px -18px rgba(26,24,48,0.4);white-space:nowrap">
-              <div style="font-size:17px;font-weight:700;color:#16142e;line-height:1.1">Dubai</div>
-              <div style="font-size:12.5px;font-weight:600;color:#4c42ff;margin-top:2px">UAE</div>
-            </div>
-            <div style="position:absolute;left:76.06%;top:57.62%;transform:translate(16px,-50%);background:#fff;border:1px solid rgba(47,39,206,0.08);border-radius:14px;padding:11px 17px;box-shadow:0 16px 38px -18px rgba(26,24,48,0.4);white-space:nowrap">
-              <div style="font-size:17px;font-weight:700;color:#16142e;line-height:1.1">Singapore</div>
-              <div style="font-size:12.5px;font-weight:600;color:#4c42ff;margin-top:2px">Singapore</div>
-            </div>
+        <div class="amm-hubgrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(18px,2.2vw,28px)">
+          <div style="position:relative;background:#fbfcff;border:1px solid rgba(47,39,206,0.08);border-radius:18px;padding:clamp(20px,2.2vw,26px);overflow:hidden;min-height:148px">
+            <img src="/img/dubai%20logo.png" alt="Dubai, United Arab Emirates" style="position:absolute;top:14px;right:14px;height:clamp(64px,6.4vw,82px);width:auto;pointer-events:none;filter:drop-shadow(0 8px 16px rgba(47,39,206,0.16))">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#4c42ff">Hub 01</div>
+            <div style="font-size:clamp(18px,1.5vw,21px);font-weight:700;color:#16142e;margin:10px 0 6px">United Arab Emirates</div>
+            <div style="font-size:14px;color:#5b5a6e;line-height:1.4;max-width:78%">Dubai &mdash; Middle East &amp; regional gateway</div>
           </div>
-        </div>
-        <div class="amm-hubgrid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,1.6vw,20px);margin-top:clamp(18px,2.2vw,28px)">
-          <div style="position:relative;background:#fbfcff;border:1px solid rgba(47,39,206,0.08);border-radius:18px;padding:clamp(20px,2.2vw,28px)">
-            <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4c42ff;margin-bottom:14px">Hub 01</div>
-            <div style="font-size:clamp(18px,1.5vw,21px);font-weight:700;color:#16142e;margin-bottom:6px">United Arab Emirates</div>
-            <div style="font-size:14px;color:#5b5a6e">Dubai &mdash; Middle East &amp; regional gateway</div>
-            <img src="/img/img-3ea735ad31.webp" alt="Burj Khalifa, Dubai" style="position:absolute;top:50%;right:clamp(20px,2.2vw,30px);transform:translateY(-50%);width:auto;height:clamp(86px,8vw,108px);pointer-events:none;filter:drop-shadow(0 8px 18px rgba(47,39,206,0.18))">
+          <div style="position:relative;background:#fbfcff;border:1px solid rgba(47,39,206,0.08);border-radius:18px;padding:clamp(20px,2.2vw,26px);overflow:hidden;min-height:148px">
+            <img src="/img/singapore%20logo.png" alt="Singapore" style="position:absolute;top:14px;right:14px;height:clamp(64px,6.4vw,82px);width:auto;pointer-events:none;filter:drop-shadow(0 8px 16px rgba(47,39,206,0.16))">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#4c42ff">Hub 02</div>
+            <div style="font-size:clamp(18px,1.5vw,21px);font-weight:700;color:#16142e;margin:10px 0 6px">Singapore</div>
+            <div style="font-size:14px;color:#5b5a6e;line-height:1.4;max-width:78%">Asia&ndash;Pacific distribution gateway</div>
           </div>
-          <div style="position:relative;background:#fbfcff;border:1px solid rgba(47,39,206,0.08);border-radius:18px;padding:clamp(20px,2.2vw,28px)">
-            <div style="font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#4c42ff;margin-bottom:14px">Hub 02</div>
-            <div style="font-size:clamp(18px,1.5vw,21px);font-weight:700;color:#16142e;margin-bottom:6px">Singapore</div>
-            <div style="font-size:14px;color:#5b5a6e">Asia&ndash;Pacific distribution gateway</div>
-            <img src="/img/img-d97cfe10eb.webp" alt="Merlion, Singapore" style="position:absolute;top:50%;right:clamp(18px,2vw,26px);transform:translateY(-50%);width:auto;height:clamp(72px,6.5vw,92px);pointer-events:none;filter:drop-shadow(0 8px 18px rgba(47,39,206,0.18))">
+          <div style="position:relative;background:#fbfcff;border:1px solid rgba(47,39,206,0.08);border-radius:18px;padding:clamp(20px,2.2vw,26px);overflow:hidden;min-height:148px">
+            <img src="/img/Wonderboom%20logo.png" alt="Wonderboom, Pretoria" style="position:absolute;top:14px;right:14px;height:clamp(66px,6.6vw,86px);width:auto;pointer-events:none;border-radius:10px;filter:drop-shadow(0 8px 16px rgba(47,39,206,0.16))">
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#4c42ff">Warehouse</div>
+            <div style="font-size:clamp(18px,1.5vw,21px);font-weight:700;color:#16142e;margin:10px 0 6px">South Africa</div>
+            <div style="font-size:14px;color:#5b5a6e;line-height:1.4;max-width:78%">Wonderboom, Pretoria &mdash; African distribution &amp; storage</div>
           </div>
         </div>
         <p style="font-size:14.5px;color:#5b5a6e;margin:clamp(16px,2vw,24px) 0 0;text-wrap:pretty">Supported by a global network of OEMs, distributors, repair stations, and logistics partners.</p>

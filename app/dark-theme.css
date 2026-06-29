@@ -346,3 +346,12 @@ html[data-theme="dark"] .pf-tablewrap,
 html[data-theme="dark"] .pf-side,
 html[data-theme="dark"] .pf-login { background: var(--d-surface) !important; }
 html[data-theme="dark"] .pf-login { box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.8) !important; }
+
+/* Strategic Presence globe — dark art + re-tinted arcs, pins and labels */
+html[data-theme="dark"] .amm-globe-img { background-image: url(/img/globe-dark.png); }
+html[data-theme="dark"] .amm-globe {
+  --amm-arc: #5fa0ff; --amm-arc-core: #dcebff; --amm-arc-glow: rgba(95, 160, 255, 0.6); --amm-plane: #eaf2ff;
+  --amm-pin-card-bg: #0f1c38; --amm-pin-card-bd: rgba(120, 150, 255, 0.22);
+  --amm-pin-city: #eef1ff; --amm-pin-sub: #8fb4ff; --amm-reg: #7fb0ff;
+}
+html[data-theme="dark"] .amm-gwp { color: #aecbff; }

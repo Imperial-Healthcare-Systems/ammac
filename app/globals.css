@@ -996,10 +996,10 @@ button,input,textarea,select,a{font-family:var(--amm-font-body)}
 .amm-f5-accent{height:3px;width:100%;background:linear-gradient(90deg,#1b3a6b,#3f8eff 50%,#1b3a6b)}
 
 .amm-f5-top{position:relative;max-width:1380px;margin:0 auto;padding:clamp(14px,1.5vw,20px) clamp(24px,4vw,60px) clamp(10px,1.2vw,16px);
-  display:grid;grid-template-columns:1.15fr 1px 1fr 1px 1.55fr;gap:clamp(24px,2.6vw,46px);align-items:start}
+  display:grid;grid-template-columns:1.15fr 1px 1fr;gap:clamp(24px,2.6vw,46px);align-items:start}
 
 /* col1 brand */
-.amm-f5-logo{height:clamp(44px,4.6vw,56px);width:auto;display:block;margin-bottom:10px;border-radius:10px;box-shadow:0 8px 22px -10px rgba(0,0,0,0.55)}
+.amm-f5-logo{height:clamp(58px,6vw,72px);width:auto;display:block;margin-bottom:10px;border-radius:10px;box-shadow:0 8px 22px -10px rgba(0,0,0,0.55)}
 .amm-f5-tag{font-size:15.5px;line-height:1.45;color:#d3deef;margin:0 0 9px}
 .amm-f5-blue{color:#3f8eff}
 .amm-f5-uline{width:62px;height:3px;background:#3f8eff;border-radius:2px;margin-bottom:12px}
@@ -1056,7 +1056,7 @@ button,input,textarea,select,a{font-family:var(--amm-font-body)}
 
 /* stats band */
 .amm-f5-stats{position:relative;background:rgba(7,16,34,0.55);border-top:1px solid rgba(90,130,200,0.14)}
-.amm-f5-statrow{max-width:1380px;margin:0 auto;padding:clamp(8px,1vw,13px) clamp(24px,4vw,60px);display:grid;grid-template-columns:repeat(4,1fr)}
+.amm-f5-statrow{max-width:1380px;margin:0 auto;padding:clamp(8px,1vw,13px) clamp(24px,4vw,60px);display:grid;grid-template-columns:repeat(5,1fr)}
 .amm-f5-stat{display:flex;align-items:center;gap:18px;padding:2px clamp(16px,2vw,36px);position:relative}
 .amm-f5-stat:not(.amm-f5-stat-last)::after{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);width:1px;height:46px;background:rgba(90,130,200,0.18)}
 .amm-f5-staticon{color:#4f9bff;flex:none}
@@ -1086,8 +1086,8 @@ button,input,textarea,select,a{font-family:var(--amm-font-body)}
   .amm-f5-vdiv:nth-of-type(2){display:none}
   .amm-f5-ops{grid-column:1 / -1}
   .amm-f5-opsaddr{margin-bottom:30px}
-  .amm-f5-statrow{grid-template-columns:1fr 1fr;gap:28px 0}
-  .amm-f5-stat:nth-child(2)::after{display:none}
+  .amm-f5-statrow{grid-template-columns:repeat(3,1fr);gap:28px 0}
+  .amm-f5-stat:nth-child(3)::after{display:none}
 }
 @media (max-width:760px){
   .amm-f5-top{grid-template-columns:1fr;gap:36px}
@@ -1537,6 +1537,13 @@ img,video{ height:auto; }
 /* On phones the overlay cards/labels crowd the globe — keep the pins + arcs,
    names are carried by the hub cards below. */
 @media (max-width:720px){.amm-globe-ov .amm-gcard,.amm-globe-ov .amm-gwp{display:none}}
+
+/* Strategic Presence hub cards — reveal the region's full address on hover / focus.
+   The overlay's background & text colours are set inline so dark-theme.css remaps
+   them automatically; this class only drives the show/hide transition. */
+.amm-hubcard{outline:none}
+.amm-hubaddr{opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .28s ease,transform .28s ease}
+.amm-hubcard:hover .amm-hubaddr,.amm-hubcard:focus .amm-hubaddr,.amm-hubcard:focus-within .amm-hubaddr{opacity:1;transform:none;pointer-events:auto}
 
 /* ---- 11. Honour reduced-motion globally for the platform layer ---- */
 @media (prefers-reduced-motion:reduce){

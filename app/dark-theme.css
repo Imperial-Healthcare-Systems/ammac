@@ -355,3 +355,18 @@ html[data-theme="dark"] .amm-globe {
   --amm-pin-city: #eef1ff; --amm-pin-sub: #8fb4ff; --amm-reg: #7fb0ff;
 }
 html[data-theme="dark"] .amm-gwp { color: #aecbff; }
+
+/* Strategic Presence world map — dark art, lifted land, re-tinted bubbles */
+html[data-theme="dark"] .amm-wmap { background: #0d1a33 !important; }
+html[data-theme="dark"] .amm-wmap-art { background-image: url(/img/worldmap-dark.jpg); }
+html[data-theme="dark"] .amm-pin-glyph path { fill: #e23b2d; }
+html[data-theme="dark"] .amm-pin-pulse { background: rgba(226, 59, 45, 0.3); }
+html[data-theme="dark"] .amm-pin-tip {
+  background: #0f1c38; border-color: rgba(120, 150, 255, 0.22);
+  box-shadow: 0 18px 44px -20px rgba(0, 0, 0, 0.8);
+}
+html[data-theme="dark"] .amm-pin-tip::after { background: #0f1c38; border-color: rgba(120, 150, 255, 0.22); }
+html[data-theme="dark"] .amm-pin-tip-eyebrow,
+html[data-theme="dark"] .amm-pin-tip-name em { color: #8fb2ff; }
+html[data-theme="dark"] .amm-pin-tip-name { color: #eaf0ff; }
+html[data-theme="dark"] .amm-pin-tip-brief { color: #a9b6d6; }

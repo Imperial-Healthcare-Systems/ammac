@@ -74,6 +74,7 @@ window.__ammToggleTheme=function(){var cur=d.getAttribute('data-theme')==='dark'
         <div id="amm-root">{children}</div>
         <div dangerouslySetInnerHTML={{ __html: footer }} />
         <Script src="/js/core.bundle.js" strategy="afterInteractive" />
+        <Script src="/js/worldmap.js" strategy="afterInteractive" />
       </body>
     </html>
   );

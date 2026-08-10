@@ -14,7 +14,7 @@
 
   // category -> {label, icon}
   var CATS = {
-    all:'All',rotable:'Rotables',avionics:'Avionics',llp:'Life-Limited',consumable:'Consumables',gse:'Tools & GSE',defence:'Defence'
+    all:'All',rotable:'Rotables',avionics:'Avionics',llp:'Life-Limited',consumable:'Consumables',gse:'Tools & GSE',defence:'Rotorcraft'
   };
 
   // sample live inventory (representative, doc-aligned)

@@ -133,7 +133,7 @@
 
   // category -> {label, icon}
   var CATS = {
-    all:'All',rotable:'Rotables',avionics:'Avionics',llp:'Life-Limited',consumable:'Consumables',gse:'Tools & GSE',defence:'Defence'
+    all:'All',rotable:'Rotables',avionics:'Avionics',llp:'Life-Limited',consumable:'Consumables',gse:'Tools & GSE',defence:'Rotorcraft'
   };
 
   // sample live inventory (representative, doc-aligned)
@@ -727,7 +727,7 @@
     h+='</div></div></div>';
     h+='<div class="pf-panel"><div class="pf-panel-head"><h3>Inventory by category</h3></div><div class="pf-panel-body"><div class="pf-bars">';
     var catMap={}; state.inventory.forEach(function(p){ catMap[p.cat]=(catMap[p.cat]||0)+p.qty; });
-    var catNames={rotable:'Rotables',avionics:'Avionics',llp:'Life-limited',consumable:'Consumables',gse:'GSE',defence:'Defence'};
+    var catNames={rotable:'Rotables',avionics:'Avionics',llp:'Life-limited',consumable:'Consumables',gse:'GSE',defence:'Rotorcraft'};
     var maxC=Math.max.apply(null,Object.keys(catMap).map(function(k){return catMap[k];}).concat([1]));
     Object.keys(catMap).forEach(function(k){
       h+='<div class="pf-bar-row"><span class="pf-muted">'+(catNames[k]||k)+'</span><div class="pf-bar-track"><div class="pf-bar-fill" style="width:'+(catMap[k]/maxC*100)+'%"></div></div><span class="pf-bar-val">'+catMap[k]+'</span></div>';
@@ -940,7 +940,7 @@
   };
 
   /* ================= INVENTORY ================= */
-  var CATN={rotable:'Rotable',avionics:'Avionics',llp:'Life-limited',consumable:'Consumable',gse:'GSE',defence:'Defence'};
+  var CATN={rotable:'Rotable',avionics:'Avionics',llp:'Life-limited',consumable:'Consumable',gse:'GSE',defence:'Rotorcraft'};
   function viewInventory(){
     var h='<div class="pf-topbar"><div><h1 class="pf-h">Inventory management</h1><p class="pf-sub">Create, edit, archive and bulk-update parts. '+state.inventory.length+' lines on hand.</p></div>'+
       '<div class="pf-tb-actions"><button class="pf-btn pf-btn-ghost pf-btn-sm" onclick="PF.bulkOpen()">Bulk CSV</button>'+

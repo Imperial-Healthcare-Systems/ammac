@@ -1649,14 +1649,6 @@
     });
   }
 
-  function loadThree(cb){
-    if(window.THREE && window.GLTFLoader){ cb(); return; }
-    var s=document.createElement('script');
-    s.src='/js/three.bundle.js'; s.onload=cb;
-    s.onerror=function(){ console.error('[ammac] three.bundle failed'); };
-    document.head.appendChild(s);
-  }
-
   function boot(){
     var pg = document.querySelector('.amm-page');
     var page = pg ? (pg.getAttribute('data-page') || 'home') : 'home';
@@ -1679,12 +1671,6 @@
           }, {rootMargin:'0px 0px -10% 0px'});
           gio.observe(gl);
         } else goGlobe();
-      }
-      var pc = document.getElementById('amm-plane-canvas');
-      if(pc && !window.__planeStarted){
-        loadThree(function(){
-          if(window.initPlaneHero){ try{ window.initPlaneHero(pc, '/plane.glb'); window.__planeStarted = true; }catch(e){ console.error(e); } }
-        });
       }
     }
     // deep-link anchor (e.g. /products#components)

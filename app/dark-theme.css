@@ -274,13 +274,17 @@ html[data-theme="dark"] [style*="rgba(253,253,252"] {
 }
 
 /* ============================================================
-   9. HOME HERO — darken the light sky photo with a navy scrim
-   (re-declares the background so the image survives, just dimmed)
+   9. HOME HERO — night sky for the static plane + cloud composition
    ============================================================ */
-html[data-theme="dark"] .amm-hero-stage {
-  background:
-    linear-gradient(180deg, rgba(7, 13, 27, 0.62), rgba(7, 13, 27, 0.88)),
-    #070d1b url("/img/img-16bad8c036.webp") center / cover no-repeat !important;
+html[data-theme="dark"] .amm-hero-stage { background: #070d1b !important; }
+html[data-theme="dark"] .amm-hero-sky {
+  background: linear-gradient(215deg, #1b3f6d 0%, #16304f 24%, #0e1c33 58%, #080f1e 100%) !important;
+}
+html[data-theme="dark"] .amm-hero-clouds,
+html[data-theme="dark"] .amm-hero-cloudvid { filter: brightness(0.46) saturate(0.7) !important; }
+html[data-theme="dark"] .amm-hero-plane { filter: brightness(0.84) drop-shadow(0 30px 46px rgba(0, 0, 0, 0.55)) !important; }
+html[data-theme="dark"] .amm-hero-scrim {
+  background: linear-gradient(90deg, rgba(7, 13, 27, 0.94) 0%, rgba(7, 13, 27, 0.8) 28%, rgba(7, 13, 27, 0.3) 50%, rgba(7, 13, 27, 0) 68%) !important;
 }
 
 /* ============================================================

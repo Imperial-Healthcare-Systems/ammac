@@ -19,10 +19,6 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:680px){.amm-hubgrid{grid-template-columns:1fr !important}}
 /* default: everything visible (beats inline hidden states + survives captures/no-JS) */
 .ammWord{transform:none}
-#amm-plane-canvas{display:block}
-@media (max-width:860px){
-  #amm-plane-canvas{opacity:.5}
-}
 .amm-pillar:hover .amm-layer-a{transform:translate(-2px,-12px)}
 .amm-pillar:hover .amm-layer-b{transform:translate(6px,-4px)}
 .amm-pillar:hover .amm-layer-c{transform:translate(14px,7px)}
@@ -43,8 +39,7 @@ button{font-family:inherit;cursor:pointer}
 @media (max-width:680px){.amm-scrollcue{display:none !important}}
 /* Mobile: let the hero flow naturally instead of clipping inside a 100vh stage */
 @media (max-width:1000px){
-  .amm-hero-section{height:auto !important}
-  .amm-hero-stage{position:static !important;height:auto !important;min-height:78vh !important;padding-top:104px !important;padding-bottom:56px !important;overflow:visible !important}
+  .amm-hero-stage{min-height:auto !important;padding-top:104px !important;padding-bottom:clamp(215px,44vw,310px) !important}
 }
 
 /* shared chrome hover affordances (parity with legacy style-hover rules) */
@@ -548,13 +543,20 @@ button{font-family:inherit;cursor:pointer}
 
 /* pillar 3D illustrations */
 .amm-pill-media{overflow:visible}
-.amm-pill-ill{width:150px;height:auto;filter:drop-shadow(0 14px 22px rgba(47,80,180,.18));transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.amm-pill-ill{width:100%;height:auto;filter:drop-shadow(0 14px 22px rgba(47,80,180,.18));transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 /* Core Services photos: one shared crop box so all three pillars frame identically */
-img.amm-pill-ill{height:108px;object-fit:cover;object-position:center;border-radius:14px;display:block;background:#eef3ff}
+img.amm-pill-ill{width:100%;height:100%;object-fit:cover;object-position:center;border-radius:14px;display:block;background:#eef3ff}
+/* diagram-style pillar art: show the whole frame, never crop the callouts */
+img.amm-pill-ill-fit{object-fit:contain;background:#fff}
 .amm-pillar:hover .amm-pill-ill{transform:translateY(-6px) scale(1.04)}
 /* capability card illustrations */
 .amm-cap-card span[style*="border-radius:50%"]{overflow:visible}
 .amm-cap-card span[style*="border-radius:50%"] > svg{width:clamp(54px,5vw,70px);height:clamp(54px,5vw,70px)}
+/* Hub cards: country flag in the corner the location logo used to occupy. */
+.amm-hubflag{position:absolute;top:14px;right:14px;width:clamp(60px,6vw,76px);
+  aspect-ratio:3/2;border-radius:8px;overflow:hidden;line-height:0;pointer-events:none;
+  border:1px solid rgba(47,39,206,.10);
+  box-shadow:0 8px 16px rgba(47,39,206,0.16)}
 /* who-we-are stats */
 .amm-who-stat:hover span[style*="border-radius:50%"]{transform:scale(1.08);transition:transform .3s}
 @media (max-width:820px){
@@ -1545,20 +1547,31 @@ img,video{ height:auto; }
 .amm-wmap-art{background-image:url(/img/worldmap-light.jpg);background-size:100% 100%;
   background-position:center;background-repeat:no-repeat}
 .amm-pin{position:absolute;transform:translate(-50%,-100%);width:26px;height:34px;padding:0;margin:0;
-  border:0;background:none;cursor:pointer;line-height:0;filter:drop-shadow(0 6px 12px rgba(217,45,32,.35))}
+  border:0;background:none;cursor:pointer;line-height:0}
 .amm-pin-glyph{width:26px;height:34px;display:block;position:relative;z-index:2;
+  filter:drop-shadow(0 6px 12px rgba(217,45,32,.35));
   transition:transform .28s cubic-bezier(.2,.8,.2,1)}
 .amm-pin-glyph path{fill:#d92d20}
 .amm-pin-glyph circle{fill:#fff}
 .amm-pin:hover .amm-pin-glyph,.amm-pin:focus-visible .amm-pin-glyph,
 .amm-pin.is-on .amm-pin-glyph{transform:translateY(-5px) scale(1.12)}
+/* Country flag badge — always visible directly above each map pin. */
+.amm-flag{display:block;width:100%;height:100%;border-radius:inherit}
+.amm-pin-flag{position:absolute;left:50%;bottom:calc(100% + 5px);transform:translateX(-50%);
+  width:34px;height:22.67px;border-radius:3.5px;overflow:hidden;z-index:4;
+  border:1px solid rgba(255,255,255,.9);box-shadow:0 5px 12px -3px rgba(22,20,46,.55);
+  background:#fff;line-height:0;pointer-events:none;transform-origin:50% 100%;
+  transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease}
+.amm-pin:hover .amm-pin-flag,.amm-pin:focus-visible .amm-pin-flag,
+.amm-pin.is-on .amm-pin-flag{transform:translateX(-50%) translateY(-5px) scale(1.12);
+  box-shadow:0 9px 18px -4px rgba(22,20,46,.5)}
 .amm-pin-pulse{position:absolute;left:50%;bottom:-6px;width:26px;height:26px;margin-left:-13px;
   border-radius:50%;background:rgba(217,45,32,.28);transform:scale(.35);z-index:1;
   animation:amm-pin-pulse 2.6s ease-out infinite}
 .amm-pin:nth-of-type(2) .amm-pin-pulse{animation-delay:.85s}
 .amm-pin:nth-of-type(3) .amm-pin-pulse{animation-delay:1.7s}
 @keyframes amm-pin-pulse{0%{transform:scale(.35);opacity:.75}70%{transform:scale(1.5);opacity:0}100%{opacity:0}}
-.amm-pin-tip{position:absolute;left:50%;bottom:calc(100% + 12px);
+.amm-pin-tip{position:absolute;left:50%;bottom:calc(100% + 40px);
   transform:translate(calc(-50% + var(--nudge,0px)),6px);
   display:flex;flex-direction:column;gap:3px;width:max-content;max-width:250px;text-align:left;
   padding:11px 14px;border-radius:12px;background:#fff;border:1px solid rgba(47,39,206,.12);
@@ -1581,16 +1594,73 @@ img,video{ height:auto; }
 @media (max-width:640px){
   .amm-pin{width:20px;height:26px}
   .amm-pin-glyph{width:20px;height:26px}
+  .amm-pin-flag{width:26px;height:17.33px;bottom:calc(100% + 4px)}
+  .amm-pin-tip{bottom:calc(100% + 32px)}
   .amm-pin-tip{max-width:180px;padding:9px 11px}
   .amm-pin-tip-name{font-size:13px}
   .amm-pin-tip-brief{font-size:11.5px}
 }
 @media (prefers-reduced-motion:reduce){
   .amm-pin-pulse{animation:none;opacity:0}
-  .amm-pin-glyph,.amm-pin-tip{transition:none}
+  .amm-pin-glyph,.amm-pin-tip,.amm-pin-flag{transition:none}
 }
 
 /* ---- 11. Honour reduced-motion globally for the platform layer ---- */
 @media (prefers-reduced-motion:reduce){
   .pf-drawer,.pf-side,.pf-toast,.pf-btn,.ps-pg-btn{ transition:none !important; }
+}
+/* ============================================================
+   HOME HERO — static plane + cloud composition
+   Replaces the retired scroll-pinned 3D plane hero (see
+   AMMAZ/_backup-hero-pin-scroll-2026-08-18/ for the old build).
+   Layer order inside .amm-hero-stage:
+     0 sky gradient  1 cloud video + cloud plate  2 plane
+     3 scrim         4 copy + scroll cue (unchanged, still z-index:4)
+   ============================================================ */
+.amm-hero-sky{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(215deg,#86addb 0%,#b7d2ef 18%,#dce9f8 42%,#f4f8fd 66%,#fdfdfe 100%);
+}
+/* Drifting clouds behind the still plate. Transparent (renders nothing) until
+   /video/hero-clouds.mp4 exists, so the plate alone carries the composition. */
+.amm-hero-cloudvid{
+  position:absolute;left:0;bottom:0;z-index:1;
+  width:100%;height:54%;object-fit:cover;object-position:50% 100%;
+  pointer-events:none;background:transparent;border:0;
+  /* fade the clip in from the sky so its top edge never reads as a seam */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.55) 26%,#000 52%);
+  mask-image:linear-gradient(to bottom,transparent 0%,rgba(0,0,0,0.55) 26%,#000 52%);
+  opacity:1;
+}
+.amm-hero-clouds{
+  position:absolute;left:50%;bottom:-11%;z-index:0;
+  width:104%;min-width:1120px;height:auto;max-width:none;
+  transform:translateX(-50%);pointer-events:none;user-select:none;
+}
+.amm-hero-plane{
+  position:absolute;right:-2%;top:52%;z-index:2;
+  width:min(66%,1180px);height:auto;max-width:none;
+  transform:translateY(-50%);pointer-events:none;user-select:none;
+  filter:drop-shadow(0 30px 46px rgba(28,48,90,0.18));
+}
+.amm-hero-scrim{
+  position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,rgba(253,253,252,0.94) 0%,rgba(253,253,252,0.78) 28%,rgba(253,253,252,0.22) 50%,rgba(234,243,255,0) 68%);
+}
+/* Tablet: pull the aircraft down and in so it clears the copy column */
+@media (max-width:1180px){
+  .amm-hero-plane{width:min(86%,1040px);right:-8%;top:52%}
+}
+/* Mobile: hero flows instead of filling the viewport; artwork sits under the copy
+   and the scrim fades vertically so the text stays legible over the clouds. */
+@media (max-width:1000px){
+  /* The copy stacks full-width here, so the artwork gets its own band beneath it
+     (see the padding-bottom on .amm-hero-stage above). Everything below is sized in
+     px, not %, because the stage grows very tall once the copy stacks — a %-height
+     cloud band grows with it and rides up into the trust strip. */
+  .amm-hero-cloudvid{height:clamp(155px,33vw,265px)}
+  .amm-hero-clouds{width:150%;min-width:0;bottom:0}
+  /* whole aircraft visible on phones rather than bleeding off the right edge */
+  .amm-hero-plane{width:min(96%,600px);right:2%;top:auto;bottom:clamp(46px,12vw,96px);transform:none}
+  .amm-hero-scrim{background:linear-gradient(180deg,rgba(253,253,252,0.94) 0%,rgba(253,253,252,0.86) 42%,rgba(253,253,252,0.35) 74%,rgba(234,243,255,0) 100%)}
 }
